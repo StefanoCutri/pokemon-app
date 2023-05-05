@@ -5,6 +5,9 @@ import {
   SafeAreaView,
   TextInput,
   TouchableOpacity,
+  ScrollView,
+  Dimensions,
+  FlatList,
 } from "react-native";
 import {
   AdjustmentsHorizontalIcon,
@@ -14,6 +17,7 @@ import pokeApi from "../../features/pokemonAxios";
 import PokemonCard from "../components/PokemonCard";
 
 const HomeScreen = () => {
+  const width = Dimensions.get("window").width;
   const [pokemons, setPokemons] = useState([]);
 
   useEffect(() => {
@@ -25,9 +29,7 @@ const HomeScreen = () => {
   return (
     <SafeAreaView className="flex-1 bg-[#dfedee]">
       <View className="ml-6 mt-[5%] divide-y">
-        <Text className="text-[#2e2f55] text-4xl font-bold">
-          Pokédex
-        </Text>
+        <Text className="text-[#2e2f55] text-4xl font-bold">Pokédex</Text>
         <Text className="text-[#2e2f55] text-lg ">
           Search for any Pokémon that exists on the planet
         </Text>
@@ -49,22 +51,22 @@ const HomeScreen = () => {
         </TouchableOpacity>
       </View>
       {/* Pokemons */}
-      <View>
-        {pokemons.map((pokemon) => (
-          <PokemonCard
-            key={pokemon.id}
-            id={pokemon.id}
-            image={pokemon.imageUrl}
-            type={pokemon.type}
-            gender={pokemon.gender}
-            stats={pokemon.stats}
-            details={pokemon.details}
-            height={pokemon.height}
-            weight={pokemon.weight}
-            abilities={pokemon.abilities}
-            weakness={pokemon.weakness}
-          />
-        ))}
+      <View
+        className="pb-36 ml-4"
+        style={{
+          alignItems: "center",
+        }}
+      >
+        <FlatList
+          data={pokemons}
+          ItemSeparatorComponent={() => (
+            <View style={{ height: 20, width: 20 }} />
+          )}
+          renderItem={({ item }) => <PokemonCard pokemon={item} />}
+          keyExtractor={(item) => item.id}
+          showsVerticalScrollIndicator={false}
+          numColumns={2}
+        />
       </View>
     </SafeAreaView>
   );
