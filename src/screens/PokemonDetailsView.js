@@ -63,6 +63,7 @@ const PokemonsDetailsView = () => {
             <Text className="font-bold" onPress={toggleModal}>
               {readMore ? "Show less" : "Read more"}
             </Text>
+            {/* Modal */}
             <View>
               <Modal isVisible={isModalVisible}>
                 <View className="flex-col items-end bg-[#2e2f55] h-90 rounded-lg relative">
@@ -81,68 +82,7 @@ const PokemonsDetailsView = () => {
             </View>
           </Text>
         </View>
-        <View className="flex-row justify-around items-center mt-4">
-          <View>
-            <Text className="text-[#2e2f55] font-bold text-2xl">Height</Text>
-            <Text className="text-[#2e2f55] text-2xl">{pokemon.height}</Text>
-          </View>
-          <View>
-            <Text className="text-[#2e2f55] font-bold text-2xl">Weight</Text>
-            <Text className="text-[#2e2f55] text-2xl">{pokemon.weight} Kg</Text>
-          </View>
-        </View>
-        <View className="flex-row justify-around items-center mt-4">
-          <View>
-            <Text className="text-[#2e2f55] font-bold text-2xl">Gender(s)</Text>
-            {pokemon.gender.map((g) => (
-              <Text className="text-[#2e2f55] text-2xl" key={g}>
-                {g.charAt(0).toUpperCase() + g.slice(1)}
-              </Text>
-            ))}
-          </View>
-          <View>
-            <Text className="text-[#2e2f55] font-bold text-2xl">
-              Egg Groups
-            </Text>
-            {pokemon["egg group"].map((g) => (
-              <Text className="text-[#2e2f55] text-2xl" key={g}>
-                {g.charAt(0).toUpperCase() + g.slice(1)}
-              </Text>
-            ))}
-          </View>
-        </View>
-        <View className="flex-row justify-around items-center mt-4">
-          <View>
-            <Text className="text-[#2e2f55] font-bold text-2xl">Abilities</Text>
-            {pokemon.abilities.map((g) => (
-              <Text className="text-[#2e2f55] text-2xl" key={g}>
-                {g.charAt(0).toUpperCase() + g.slice(1)}
-              </Text>
-            ))}
-          </View>
-          <View>
-            <Text className="text-[#2e2f55] font-bold text-2xl">Types</Text>
-            {pokemon.type.map((g) => (
-              <Text
-                className="text-[#2e2f55] text-2xl rounded-lg border bg-red-400 mb-2"
-                key={g}
-              >
-                {g.charAt(0).toUpperCase() + g.slice(1)}
-              </Text>
-            ))}
-          </View>
-        </View>
-        <View className="ml-8">
-          <Text className="text-[#2e2f55] font-bold text-2xl">
-            Weak Against
-          </Text>
-          <View className="flex-row">
-            {pokemon.weakness.map((g) => (
-              <Text className="text-[#2e2f55] text-2xl mr-2">{g.charAt(0).toUpperCase() + g.slice(1)}</Text>
-            ))}
-          </View>
-        </View>
-        <View></View>
+        
       </ScrollView>
     </SafeAreaView>
   );
