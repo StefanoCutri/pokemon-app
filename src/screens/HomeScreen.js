@@ -5,8 +5,6 @@ import {
   SafeAreaView,
   TextInput,
   TouchableOpacity,
-  ScrollView,
-  Dimensions,
   FlatList,
 } from "react-native";
 import {
@@ -17,7 +15,6 @@ import pokeApi from "../../features/pokemonAxios";
 import PokemonCard from "../components/PokemonCard";
 
 const HomeScreen = () => {
-  const width = Dimensions.get("window").width;
   const [pokemons, setPokemons] = useState([]);
 
   useEffect(() => {
