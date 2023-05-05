@@ -19,14 +19,13 @@ const HomeScreen = () => {
   useEffect(() => {
     pokeApi.get("/list-pokemon?offset=10&limit=20").then((data) => {
       setPokemons(data.data);
-      console.log(data.data[0].abilities);
     });
   }, []);
 
   return (
     <SafeAreaView className="flex-1 bg-[#dfedee]">
-      <View className="ml-6 mt-4 divide-y">
-        <Text className="text-[#2e2f55] text-4xl font-bold border-2">
+      <View className="ml-6 mt-[5%] divide-y">
+        <Text className="text-[#2e2f55] text-4xl font-bold">
           Pokédex
         </Text>
         <Text className="text-[#2e2f55] text-lg ">
@@ -55,6 +54,7 @@ const HomeScreen = () => {
           <PokemonCard
             key={pokemon.id}
             id={pokemon.id}
+            image={pokemon.imageUrl}
             type={pokemon.type}
             gender={pokemon.gender}
             stats={pokemon.stats}
