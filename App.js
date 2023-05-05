@@ -1,33 +1,36 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import HomeScreen from "./src/screens/HomeScreen";
-import DetailsScreen from "./src/screens/DetailsScreen";
+import PokemonsView from "./src/screens/PokemonsView";
+import PokemonsDetailsView from "./src/screens/PokemonDetailsView";
+import { Provider } from "react-redux";
+import { store } from "./store";
 
 const Stack = createNativeStackNavigator();
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Home"
-          component={HomeScreen}
-          options={{
-            headerShown: false,
-          }}
-        />
-        <Stack.Screen
-          name="Details"
-          component={DetailsScreen}
-          options={{
-            headerShown: false,
-            presentation: "modal",
-            headerShown: false,
-          }}
+    <Provider store={store}>
 
-        />
-      </Stack.Navigator>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="Home"
+            component={PokemonsView}
+            options={{
+              headerShown: false,
+            }}
+            />
+          <Stack.Screen
+            name="Details"
+            component={PokemonsDetailsView}
+            options={{
+              headerShown: false,
+              headerShown: false,
+            }}
+            />
+        </Stack.Navigator>
+            </Provider>
     </NavigationContainer>
   );
-}
+};
 
 export default App;
