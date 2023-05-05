@@ -9,15 +9,12 @@ import React, { useState } from "react";
 import { useNavigation, useRoute } from "@react-navigation/core";
 import {
   ArrowLeftIcon,
-  ArrowRightCircleIcon,
   ArrowRightIcon,
   XCircleIcon,
 } from "react-native-heroicons/outline";
 import * as Progress from "react-native-progress";
 import { SvgUri } from "react-native-svg";
 import Modal from "react-native-modal";
-
-import PokemonCard from "../components/PokemonCard";
 
 const PokemonsDetailsView = () => {
   const {
@@ -225,7 +222,7 @@ const PokemonsDetailsView = () => {
           </Text>
           <View className="flex-row justify-around items-center">
             {pokemon["evaluation chain"].map((image, i) => (
-              <>
+              <View key={i} className="flex-row items-center">
                 <View
                   className="border rounded-lg px-4 h-40 justify-center items-center"
                   key={image}
@@ -237,7 +234,7 @@ const PokemonsDetailsView = () => {
                   <SvgUri width="65" height="75" uri={image} />
                 </View>
                 {i < 2 && <ArrowRightIcon key={i} size={30} color="#2e2f55" />}
-              </>
+              </View>
             ))}
           </View>
         </View>
