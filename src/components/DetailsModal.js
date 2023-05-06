@@ -1,6 +1,6 @@
 import { View, Text } from "react-native";
 import React from "react";
-import { Modal } from "react-native-web";
+import Modal from "react-native-modal";
 import { XCircleIcon } from "react-native-heroicons/outline";
 
 const DetailsModal = ({ isModalVisible, toggleModal, details }) => {

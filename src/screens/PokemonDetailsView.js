@@ -15,6 +15,7 @@ import {
 import * as Progress from "react-native-progress";
 import { SvgUri } from "react-native-svg";
 import Modal from "react-native-modal";
+import DetailsModal from "../components/DetailsModal";
 
 const PokemonsDetailsView = () => {
   const {
@@ -30,7 +31,6 @@ const PokemonsDetailsView = () => {
     setModalVisible(!isModalVisible);
   };
 
-  console.log(pokemon["evaluation chain"]);
   const navigation = useNavigation();
 
   return (
@@ -69,24 +69,16 @@ const PokemonsDetailsView = () => {
               {readMore ? "Show less" : "Read more"}
             </Text>
           </Text>
-          {/* Modal */}
-          <View>
-            <Modal isVisible={isModalVisible}>
-              <View className="flex-col items-end bg-[#2e2f55] h-90 rounded-lg relative">
-                <View className="mt-4 mr-5">
-                  <XCircleIcon size={30} color="white" onPress={toggleModal} />
-                </View>
-                <Text className="text-white text-sm p-4">
-                  {pokemon.details}
-                </Text>
-              </View>
-            </Modal>
-          </View>
-        </View>
 
+          {/* Modal */}
+          <DetailsModal
+            details={pokemon.details}
+            isModalVisible={isModalVisible}
+            toggleModal={toggleModal}
+          />
+        </View>
         {/* Pokemon Info */}
         {/* Heigh and Weight */}
-
         <View className="flex-row justify-around px-6">
           <View>
             <View className="mb-4">

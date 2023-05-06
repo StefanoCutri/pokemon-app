@@ -13,8 +13,14 @@ import {
 } from "react-native-heroicons/outline";
 import PokemonCard from "../components/PokemonCard";
 import usePokemonViewController from "../view/pokemon/usePokemonViewController";
-const PokemonsView = () => {
+import FiltersModal from "../components/FiltersModal";
 
+const PokemonsView = () => {
+  const [isModalVisible, setModalVisible] = useState(false);
+
+  const toggleModal = () => {
+    setModalVisible(!isModalVisible);
+  };
   const { pokemons } = usePokemonViewController();
   return (
     <SafeAreaView className="flex-1 bg-[#dfedee]">
@@ -33,12 +39,14 @@ const PokemonsView = () => {
           />
           <MagnifyingGlassIcon size={30} color="#2e2f55" />
         </View>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={toggleModal}>
           <View className="bg-[#2e2f55] p-4 rounded-lg">
             <AdjustmentsHorizontalIcon color="white" />
           </View>
         </TouchableOpacity>
       </View>
+      {/* Filters Modal */}
+      <FiltersModal isModalVisible={isModalVisible} toggleModal={toggleModal} />
       <View
         className="pb-36 ml-4"
         style={{
