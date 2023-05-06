@@ -231,7 +231,7 @@ const PokemonsDetailsView = () => {
           </View>
         </View>
         <View
-          className="flex-1 mt-14 pb-20 flex-row
+          className="flex-1 mt-14 pb-8 flex-row
         justify-around"
         >
           <TouchableOpacity className="bg-[#2e2f55] px-5 rounded-lg flex-row justify-between items-center py-4">
